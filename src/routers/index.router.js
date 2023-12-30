@@ -73,7 +73,7 @@ router.get('/', privateRouter, (req, res) => {
 router.get('/profile', privateRouter, (req, res) => {
   // Obtén el token de las cookies
   const token = req.signedCookies.access_token;
-  console.log('EL TOTOTOKEN ES:', token);
+  console.log('EL TOKEN ES:', token);
   // Verifica si hay un token
   if (!token) {
     return res.redirect('/login');

@@ -29,6 +29,7 @@ router.post('/sessions/register', async (req, res) => {
 
     // Generar token JWT para el nuevo usuario
     const token = tokenGenerator(newUser);
+    console.log("El Token para el postman", token);
 
     // Establecer la cookie con el token
     // res.cookie('access_token', token, { maxAge: 1000 * 60 * 30, httpOnly: true, signed: true });

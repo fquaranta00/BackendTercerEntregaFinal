@@ -7,6 +7,7 @@ import handlebars from 'express-handlebars';
 import sessionsRouter from './routers/sessions.router.js';
 import productsRouterMD from "../src/routers/api/products.router.js";
 import cartsRouterMD from "../src/routers/api/carts.router.js";
+import usersRouter from '../src/routers/api/users.router.js';
 import Views from "../src/routers/views.router.js"
 import config from '../src/config/config.js';
 
@@ -44,12 +45,23 @@ app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
 app.use('/api', sessionsRouter, productsRouterMD, cartsRouterMD);
+app.use('/api/users', usersRouter);
 app.use('/views', Views);
 
+// app.use((error, req, res, next) => {
+//   const message = `Ah ocurrido un error desconocido 😨: ${error.message}`;
+//   console.log(message);
+//   res.status(500).json({ status: 'error', message });
+// });
+
 app.use((error, req, res, next) => {
-  const message = `Ah ocurrido un error desconocido 😨: ${error.message}`;
-  console.log(message);
-  res.status(500).json({ status: 'error', message });
+  if (error instanceof Exception) {
+    res.status(error.status).json({ status: 'error', message: error.message });
+  } else {
+    const message = `Ah ocurrido un error desconocido 😨: ${error.message}`;
+    console.log(message);
+    res.status(500).json({ status: 'error', message });
+  }
 });
 
 export default app;
