@@ -9,6 +9,10 @@ export default class UserDao {
     return UserModel.findById(uid);
   }
 
+  static getByEmail = (email) => {
+    return UserModel.findOne({ email });
+  }
+
   static create = (data) => {
     return UserModel.create(data);
   }

@@ -1,9 +1,9 @@
 // order.service.js
 
-import OrderDao from '../dao/order.dao.js';
+import OrderDao from '../dao/ticket.dao.js';
 // import BusinessService from '../services/business.service.js';
-import UserService from '../services/user.service.js';
-import CartService from '../services/cart.service.js';
+import UserService from './user.service.js';
+import CartService from './cart.service.js';
 
 export default class OrderService {
   static async getAllOrders() {

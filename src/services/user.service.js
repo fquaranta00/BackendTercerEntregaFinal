@@ -18,6 +18,14 @@ export default class UserService {
     return user;
   };
 
+  static getByEmail = async (email) => {
+    const user = await UserDao.getByEmail(email);
+    if (!user) {
+      throw new NotFoundException('User not found by email');
+    }
+    return user;
+  };
+
   static updateById = (uid, data) => {
     return UserDao.updateById(uid, data);
   };

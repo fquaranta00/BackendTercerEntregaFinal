@@ -16,4 +16,9 @@ export default class UsersController {
   static updateById = async (uid, data) => {
     return await UserService.updateById(uid, data);
   };
+
+  static getByEmail = async (email) => {
+    return await UserService.getByEmail(email);
+  };
+
 }

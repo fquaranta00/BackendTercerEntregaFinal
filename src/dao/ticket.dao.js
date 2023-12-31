@@ -1,38 +1,35 @@
-// order.dao.js
-
-import Order from '../models/order.model.js';
+import Ticket from '../models/ticket.model.js';
 import { Exception } from '../utils.js';
 
-export default class OrderDao {
-  static async getAllOrders() {
+export default class TicketDao {
+  static async getAllTickets() {
     try {
-      const orders = await Order.find();
-      return orders;
+      const tickets = await Ticket.find();
+      return tickets;
     } catch (error) {
       console.error('Error al obtener todas las órdenes:', error);
       throw new Exception('Error al obtener todas las órdenes', 500);
     }
   }
 
-  static async getOrderById(orderId) {
+  static async getTicketById(ticketId) {
     try {
-      const order = await Order.findById(orderId);
-      return order;
+      const ticket = await Ticket.findById(ticketId);
+      return ticket;
     } catch (error) {
       console.error('Error al obtener la orden por ID:', error);
       throw new Exception('Error al obtener la orden por ID', 500);
     }
   }
 
-  static async createOrder(data) {
+  static async createTicket(data) {
     try {
-      const newOrder = await Order.create(data);
-      return newOrder;
+      const newTicket = await Ticket.create(data);
+      return newTicket;
     } catch (error) {
       console.error('Error al crear la orden:', error);
       throw new Exception('Error al crear la orden', 500);
     }
   }
 
-  // ... (otros métodos según sea necesario)
 }

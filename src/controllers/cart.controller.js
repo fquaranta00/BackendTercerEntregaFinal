@@ -1,5 +1,5 @@
 import CartService from '../services/cart.service.js';
-import OrderService from '../services/order.service.js';
+import OrderService from '../services/ticket.service.js';
 
 
 export default class CartController {
